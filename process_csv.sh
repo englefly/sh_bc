@@ -1,0 +1,11 @@
+./process_csv.py ../6be/round1/1v1.csv ../6be/round1/1v1_processed.csv
+./process_csv.py ../6be/round1/1v2.csv ../6be/round1/1v2_processed.csv
+./process_csv.py ../6be/round1/1v4.csv ../6be/round1/1v4_processed.csv
+./process_csv.py ../6be/round1/1v8.csv ../6be/round1/1v8_processed.csv
+./process_csv.py ../6be/round1/1v12.csv ../6be/round1/1v12_processed.csv
+./process_csv.py ../6be/round1/1v16.csv ../6be/round1/1v16_processed.csv
+./process_csv.py ../6be/round1/2v1.csv ../6be/round1/2v1_processed.csv
+./process_csv.py ../6be/round1/4v1.csv ../6be/round1/4v1_processed.csv
+./process_csv.py ../6be/round1/8v1.csv ../6be/round1/8v1_processed.csv
+./process_csv.py ../6be/round1/12v1.csv ../6be/round1/12v1_processed.csv
+./process_csv.py ../6be/round1/16v1.csv ../6be/round1/16v1_processed.csv
