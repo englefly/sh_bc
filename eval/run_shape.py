@@ -4,6 +4,7 @@ import subprocess
 import time
 import os
 import glob
+import sys
 
 
 def sql(query):
@@ -143,12 +144,25 @@ if __name__ == "__main__":
 
     batches = ["16v1", "1v16", "12v1", "1v12", "8v1", "1v8",  "4v1", "1v4", "2v1",  "1v2" , "1v1"]
 
+    shape_3be = "shuffle_type/3be"
+    if not os.path.exists(shape_3be):
+        os.makedirs(shape_3be)
+    else:
+        print(f"{shape_3be} is already exists, exit ...")
+        sys.exit(1)
     sql("set global be_number_for_test = 3;")
     for batch_name in batches:
-        result_file_path = os.path.join(work_dir, "shuffle_type/3be", batch_name + ".csv")
+        result_file_path = os.path.join(work_dir, shape_3be, batch_name + ".csv")
         sql_template = templates[batch_name]
         with open(result_file_path, 'w') as output:
             batch(sql_template, output)
+
+    shape_6be = "shuffle_type/6be"
+    if not os.path.exists(shape_6be):
+        os.makedirs(shape_6be)
+    else:
+        print(f"{shape_6be} is already exists, exit ...")
+        sys.exit(1)
 
     sql("set global be_number_for_test = 6;")
     for batch_name in batches:

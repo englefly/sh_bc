@@ -1,0 +1,29 @@
+master
+
+➜  eval git:(main) ✗ ./eval.py ../processed/3be shuffle_type/3be result/3be
+16v1: good=624.58, bad=95.24
+1v16: good=8.73, bad=430.39
+12v1: good=544.74, bad=72.52
+1v12: good=21.14, bad=305.97
+8v1: good=466.52, bad=55.67
+1v8: good=18.43, bad=227.58
+4v1: good=179.97, bad=57.95
+1v4: good=25.87, bad=56.67
+2v1: good=57.46, bad=16.64
+1v2: good=26.63, bad=17.81
+1v1: good=29.07, bad=15.23
+good_sum=2003.14, bad_sum=1351.67
+
+➜  eval git:(main) ✗  ./eval.py ../processed/6be shuffle_type/6be result/6be
+16v1: good=84.80, bad=71.47
+1v16: good=1.41, bad=269.34
+12v1: good=74.41, bad=52.45
+1v12: good=2.97, bad=179.96
+8v1: good=51.39, bad=36.34
+1v8: good=2.64, bad=130.53
+4v1: good=17.18, bad=16.24
+1v4: good=2.82, bad=53.95
+2v1: good=6.95, bad=12.39
+1v2: good=3.95, bad=22.48
+1v1: good=4.84, bad=12.23
+good_sum=253.36, bad_sum=857.38

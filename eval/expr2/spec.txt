@@ -1,0 +1,35 @@
+修改代码
+    public double dataSizeFactor(List<Slot> slots) {
+        // double lowerBound = 0.03;
+        // double upperBound = 0.07;
+        // return Math.min(Math.max(computeTupleSize(slots) / K_BYTES, lowerBound), upperBound);
+        return computeTupleSize(slots);
+
+
+➜  eval git:(main) ✗ ./eval.py ../processed/3be shuffle_type/3be result/3be
+16v1: good=719.82, bad=0.00
+1v16: good=17.66, bad=421.46
+12v1: good=617.26, bad=0.00
+1v12: good=27.76, bad=299.35
+8v1: good=522.19, bad=0.00
+1v8: good=23.93, bad=222.08
+4v1: good=237.92, bad=0.00
+1v4: good=43.04, bad=39.50
+2v1: good=74.10, bad=0.00
+1v2: good=42.94, bad=1.50
+1v1: good=43.77, bad=0.53
+good_sum=2370.39, bad_sum=984.42
+
+➜  eval git:(main) ✗ ./eval.py ../processed/6be shuffle_type/6be result/6be
+16v1: good=156.27, bad=0.00
+1v16: good=12.15, bad=258.60
+12v1: good=126.86, bad=0.00
+1v12: good=13.68, bad=169.25
+8v1: good=87.73, bad=0.00
+1v8: good=9.57, bad=123.60
+4v1: good=33.42, bad=0.00
+1v4: good=25.80, bad=30.97
+2v1: good=18.33, bad=1.01
+1v2: good=22.82, bad=3.61
+1v1: good=15.74, bad=1.33
+good_sum=522.37, bad_sum=588.37

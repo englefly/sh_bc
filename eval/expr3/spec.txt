@@ -1,0 +1,47 @@
+修改
+expr2 的基础上调整 shuffle 的代价，增加hash函数的计算和内存代价
+public Cost visitPhysicalDistribute(
+            PhysicalDistribute<? extends Plan> distribute, PlanContext context) {
+        Statistics childStatistics = context.getChildStatistics(0);
+        double intputRowCount = childStatistics.getRowCount();
+        DistributionSpec spec = distribute.getDistributionSpec();
+
+        // shuffle
+        if (spec instanceof DistributionSpecHash) {
+            double base  = intputRowCount * childStatistics.dataSizeFactor(
+                    distribute.child().getOutput()) / beNumber;
+            double keyShare = (((DistributionSpecHash) spec).getOrderedShuffledColumns().size() / (double) distribute.getOutput().size());
+            return CostV1.of(context.getSessionVariable(),
+                    base * keyShare,
+                    base * keyShare * 1.5,
+                    base
+                    );
+        }
+
+
+➜  eval git:(main) ✗ ./eval.py ../processed/3be shuffle_type/3be result/3be
+16v1: good=719.82, bad=0.00
+1v16: good=439.12, bad=0.00
+12v1: good=617.26, bad=0.00
+1v12: good=327.11, bad=0.00
+8v1: good=522.19, bad=0.00
+1v8: good=246.01, bad=0.00
+4v1: good=237.92, bad=0.00
+1v4: good=82.54, bad=0.00
+2v1: good=74.10, bad=0.00
+1v2: good=44.44, bad=0.00
+1v1: good=44.30, bad=0.00
+good_sum=3354.81, bad_sum=0.00
+➜  eval git:(main) ✗ ./eval.py ../processed/6be shuffle_type/6be result/6be
+16v1: good=156.27, bad=0.00
+1v16: good=270.75, bad=0.00
+12v1: good=126.86, bad=0.00
+1v12: good=182.93, bad=0.00
+8v1: good=87.73, bad=0.00
+1v8: good=133.17, bad=0.00
+4v1: good=32.85, bad=0.57
+1v4: good=56.77, bad=0.00
+2v1: good=19.34, bad=0.00
+1v2: good=26.43, bad=0.00
+1v1: good=17.07, bad=0.00
+good_sum=1110.17, bad_sum=0.57
